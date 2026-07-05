@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Financial Summary</title>
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/tracker.css') }}">
+
+<body>
+
+<div class="container">
+
+    <h1>📊 Financial Summary</h1>
+
+    <br>
+
+    <div class="summary-card income-card">
+
+        <h3>💰 Monthly Income</h3>
+
+        <h2>₹ {{ total_income }}</h2>
+
+    </div>
+
+    <br>
+
+    <div class="summary-card expense-card">
+
+        <h3>💸 Total Expenses</h3>
+
+        <h2>₹ {{ total_expense }}</h2>
+
+    </div>
+
+    <br>
+
+    <div class="summary-card balance-card">
+
+        <h3>💵 Remaining Balance</h3>
+
+        <h2>₹ {{ balance }}</h2>
+
+    </div>
+
+    <br><br>
+
+    <h2>Expense Details</h2>
+
+    <table class="expense-table">
+
+        <tr>
+
+            <th>Title</th>
+
+            <th>Amount</th>
+
+            <th>Category</th>
+
+        </tr>
+
+        {% for expense in expenses %}
+
+        <tr>
+
+            <td>{{ expense.title }}</td>
+
+            <td>₹ {{ expense.amount }}</td>
+
+            <td>{{ expense.category }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/dashboard">
+
+        <button class="back-btn">
+
+    ← Back to Dashboard
+
+</button>
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

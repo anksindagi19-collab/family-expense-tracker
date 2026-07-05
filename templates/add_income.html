@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Add Income</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Monthly Income</h2>
+
+    <form method="POST">
+
+        <input type="text"
+               name="source"
+               placeholder="Income Source (Salary, Business...)"
+               required>
+
+        <br><br>
+
+        <input type="number"
+               name="amount"
+               placeholder="Monthly Income"
+               required>
+
+        <br><br>
+
+        <button type="submit">
+            Save Income
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/dashboard">← Back to Dashboard</a>
+
+</div>
+
+</body>
+
+</html>

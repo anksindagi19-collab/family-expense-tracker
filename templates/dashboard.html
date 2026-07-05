@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💰 Family Expense Tracker</h1>
+
+    <p class="subtitle">
+        Welcome! Choose an option below.
+    </p>
+
+    <div class="dashboard-grid">
+
+        <div class="card">
+
+            <h2>💰 Monthly Income</h2>
+
+            <p>Add your monthly income.</p>
+
+            <a href="/add_income" class="btn green">
+                Add Income
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h2>💸 Add Expense</h2>
+
+            <p>Record a new expense.</p>
+
+            <a href="/add_expense" class="btn blue">
+                Add Expense
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h2>📋 View Expenses</h2>
+
+            <p>See all saved expenses.</p>
+
+            <a href="/view_expenses" class="btn purple">
+                View
+            </a>
+
+        </div>
+
+        <div class="card">
+
+            <h2>📊 Financial Summary</h2>
+
+            <p>Check income, expenses and balance.</p>
+
+            <a href="/tracker" class="btn orange">
+                Open
+            </a>
+
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <a href="/" class="btn red">
+        Logout
+    </a>
+
+</div>
+
+</body>
+
+</html>

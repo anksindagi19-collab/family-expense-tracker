@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Family Expense Tracker</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        💰 Family Expense Tracker
+    </div>
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+
+        <a href="/login" class="login-btn">Login</a>
+
+        <a href="/register" class="register-btn">Register</a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="left">
+
+        <h1>
+            Smart Expenses,<br>
+            Better Savings,<br>
+            Stronger Family
+        </h1>
+
+        <p>
+            Manage your family's income, expenses and savings
+            in one simple place.
+        </p>
+
+        <a href="/register">
+            <button>Get Started</button>
+        </a>
+
+    </div>
+
+    <div class="right">
+
+        <img src="{{ url_for('static', filename='images/family.png') }}"
+             alt="Family">
+
+    </div>
+
+</section>
+<section class="stats">
+
+    <div class="stat-box">
+        <h2>💰</h2>
+        <h3>Track Income</h3>
+        <p>Manage monthly family income easily.</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>💸</h2>
+        <h3>Control Expenses</h3>
+        <p>Keep every expense organized.</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>📊</h2>
+        <h3>View Reports</h3>
+        <p>Check your financial summary anytime.</p>
+    </div>
+
+    <div class="stat-box">
+        <h2>🏆</h2>
+        <h3>Save More</h3>
+        <p>Monitor your remaining balance and savings.</p>
+    </div>
+
+</section>
+
+<section id="features">
+
+    <h2>Our Features</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            💰
+            <h3>Income Tracking</h3>
+            <p>Add monthly income.</p>
+        </div>
+
+        <div class="card">
+            💸
+            <h3>Expense Tracking</h3>
+            <p>Manage expenses easily.</p>
+        </div>
+
+        <div class="card">
+            📊
+            <h3>Financial Summary</h3>
+            <p>View savings and balance.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="about">
+
+    <h2>About</h2>
+
+    <p>
+        This project is developed using Flask, Python and MySQL
+        to help families manage their finances easily.
+    </p>
+
+</section>
+
+<footer>
+
+    <h3>Family Expense Tracker</h3>
+
+    <p>Built using Flask • Python • MySQL</p>
+
+    <p>© 2026 Ankita Sindagi</p>
+
+</footer>
+
+</body>
+</html>
