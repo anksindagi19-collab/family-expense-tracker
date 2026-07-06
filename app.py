@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from config import Config
 from models import db, User, Expense, Income
 
@@ -60,7 +60,9 @@ def login():
         ).first()
 
         if user:
-            return redirect("/dashboard")
+           session["user_id"] = user.id
+           return redirect("/dashboard")
+        
         else:
             return "Invalid Email or Password"
 
@@ -71,6 +73,10 @@ def login():
 
 @app.route("/dashboard")
 def dashboard():
+
+    if "user_id" not in session:
+        return redirect("/login")
+
     return render_template("dashboard.html")
 
 
@@ -79,6 +85,9 @@ def dashboard():
 @app.route("/add_income", methods=["GET", "POST"])
 def add_income():
 
+    if "user_id" not in session:
+        return redirect("/login")
+
     if request.method == "POST":
 
         source = request.form["source"]
@@ -86,7 +95,8 @@ def add_income():
 
         income = Income(
             source=source,
-            amount=amount
+            amount=float(amount),
+            user_id=session["user_id"]
         )
 
         db.session.add(income)
@@ -96,11 +106,13 @@ def add_income():
 
     return render_template("add_income.html")
 
-
 # ---------------- ADD EXPENSE ----------------
 
 @app.route("/add_expense", methods=["GET", "POST"])
 def add_expense():
+
+    if "user_id" not in session:
+        return redirect("/login")
 
     if request.method == "POST":
 
@@ -111,7 +123,8 @@ def add_expense():
         expense = Expense(
             title=title,
             amount=float(amount),
-            category=category
+            category=category,
+            user_id=session["user_id"]
         )
 
         db.session.add(expense)
@@ -126,7 +139,12 @@ def add_expense():
 @app.route("/view_expenses")
 def view_expenses():
 
-    expenses = Expense.query.all()
+    if "user_id" not in session:
+        return redirect("/login")
+
+    expenses = Expense.query.filter_by(
+        user_id=session["user_id"]
+    ).all()
 
     return render_template(
         "view_expenses.html",
@@ -139,7 +157,13 @@ def view_expenses():
 @app.route("/delete_expense/<int:id>")
 def delete_expense(id):
 
-    expense = Expense.query.get_or_404(id)
+    if "user_id" not in session:
+        return redirect("/login")
+
+    expense = Expense.query.filter_by(
+        id=id,
+        user_id=session["user_id"]
+    ).first_or_404()
 
     db.session.delete(expense)
     db.session.commit()
@@ -149,11 +173,21 @@ def delete_expense(id):
 
 # ---------------- FINANCIAL SUMMARY ----------------
 
+# ---------------- FINANCIAL SUMMARY ----------------
+
 @app.route("/tracker")
 def tracker():
 
-    incomes = Income.query.all()
-    expenses = Expense.query.all()
+    if "user_id" not in session:
+        return redirect("/login")
+
+    incomes = Income.query.filter_by(
+        user_id=session["user_id"]
+    ).all()
+
+    expenses = Expense.query.filter_by(
+        user_id=session["user_id"]
+    ).all()
 
     total_income = sum(income.amount for income in incomes)
 
@@ -170,6 +204,10 @@ def tracker():
         balance=balance
     )
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/login")
 
 # ---------------- RUN APP ----------------
 
