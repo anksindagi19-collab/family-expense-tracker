@@ -21,6 +21,8 @@ def home():
 
 # ---------------- REGISTER ----------------
 
+# ---------------- REGISTER ----------------
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
@@ -30,6 +32,13 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
 
+        # Check if email already exists
+        existing_user = User.query.filter_by(email=email).first()
+
+        if existing_user:
+            return "Email already registered! Please login with your existing account."
+
+        # Create new user
         user = User(
             username=username,
             email=email,
@@ -42,7 +51,6 @@ def register():
         return redirect("/login")
 
     return render_template("register.html")
-
 
 # ---------------- LOGIN ----------------
 
