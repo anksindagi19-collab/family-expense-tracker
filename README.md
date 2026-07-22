@@ -16,34 +16,38 @@ Family Expense Tracker is a Flask-based web application that helps users manage 
 - 👥 Multi-User Support (Each user can access only their own data)
 - 💾 SQLite Database Integration
 - 🌐 Live Web Application
+- ☁️ Deployed on Render
 
 ---
 
 ## 🏗️ Project Structure
 
-```
+```text
 Family-Expense-Tracker/
 │── app.py                 # Main Flask application
 │── models.py              # Database models
 │── config.py              # Application configuration
 │── requirements.txt       # Project dependencies
-│── templates/
+│── Procfile               # Gunicorn configuration for Render
+│── runtime.txt            # Python runtime version
+│── README.md
+│
+├── templates/
 │   ├── home.html
-│   ├── login.html
 │   ├── register.html
+│   ├── login.html
 │   ├── dashboard.html
 │   ├── add_income.html
 │   ├── add_expense.html
 │   ├── view_expenses.html
 │   └── tracker.html
 │
-│── static/
+├── static/
 │   ├── css/
 │   │   └── style.css
 │   └── images/
 │
-│── expense_tracker.db     # SQLite Database
-│── README.md
+└── expense_tracker.db
 ```
 
 ---
@@ -97,7 +101,7 @@ python app.py
 
 Open your browser:
 
-```
+```text
 http://127.0.0.1:5000
 ```
 
@@ -111,8 +115,9 @@ http://127.0.0.1:5000
 4. Record your daily expenses.
 5. View your expense history.
 6. Check your financial summary.
-7. Logout securely.
-8. Each user can only access their own financial data.
+7. Delete expenses when needed.
+8. Logout securely.
+9. Each user can only access their own financial data.
 
 ---
 
@@ -136,21 +141,21 @@ The application automatically calculates:
 - CSS3
 - Git
 - GitHub
-- PythonAnywhere
+- Render
 
 ---
 
 # 🌐 Live Demo
 
-**Live Website**
+### 🚀 Live Website
 
-👉 https://ankitasindagi.pythonanywhere.com
+👉 **https://family-expense-tracker-8oaw.onrender.com**
 
 ---
 
 # 💻 GitHub Repository
 
-👉 https://github.com/anksindagi19-collab/family-expense-tracker
+👉 **https://github.com/anksindagi19-collab/family-expense-tracker**
 
 ---
 
@@ -161,17 +166,13 @@ The application automatically calculates:
 - 📊 Expense Charts & Graphs
 - 📂 Export Reports (PDF / Excel)
 - 🔍 Filter by Date & Category
+- 🏷️ Expense Categories
 - 📱 Mobile-Friendly UI
 - 📧 Email Notifications
-- 🌍 Cloud Database Integration
+- ☁️ PostgreSQL Database Integration
 
 ---
 
-# 📸 Screenshots
-
-_Add screenshots of your Home Page, Dashboard, Add Expense, View Expenses, and Financial Summary here._
-
----
 
 # 📄 License
 
@@ -185,4 +186,6 @@ This project is developed for educational and learning purposes.
 
 Electronics & Communication Engineering (ECE)
 
-GitHub: https://github.com/anksindagi19-collab
+**GitHub:** https://github.com/anksindagi19-collab
+
+**Live Demo:** https://family-expense-tracker-8oaw.onrender.com
